@@ -21,7 +21,7 @@ class PkmListViewModel: ObservableObject {
     
     func getBy(page: Int) {
         isLoading = true
-        let offset: Int = page * 20
+        let offset: Int = (page - 1) * 20
         api.pokemon.getPage(request: PkmPageRequest(offset: offset, limit: 20), { success, object, error in
             if (success) {
                 self.pkmPage = object

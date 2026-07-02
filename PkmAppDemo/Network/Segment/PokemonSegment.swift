@@ -41,4 +41,29 @@ class PokemonSegment {
         })
     }
     
+    func getDetail(request: PkmDetailRequest,_ onResult: @escaping (_ success: Bool, _ dataResponse: PkmDetailResponse?, _ errorResponse: PkmError?) -> ()) {
+        
+        let url: String = Base_URL + Endpoint.GET.pokemonDetail + "\(request.index)/"
+        
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json"
+        ]
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers).responseJSON(completionHandler: { result in
+            switch (result.response!.statusCode) {
+                case 200:
+                    let object: PkmDetailResponse = try! JSONDecoder().decode(PkmDetailResponse.self, from: result.data!)
+                    onResult(true, object, nil)
+                    break
+                case 400:
+                    let object: PkmError = PkmError(error: "Bad Request")
+                    onResult(false, nil, object)
+                    break
+                default:
+                    onResult(false, nil, nil)
+                    break
+            }
+        })
+    }
+    
 }
