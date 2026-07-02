@@ -11,7 +11,9 @@ import SwiftUI
 struct PkmAppDemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView(content: {
+                PokemonList()
+            })
         }
     }
 }
