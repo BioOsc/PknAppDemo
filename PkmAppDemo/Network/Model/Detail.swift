@@ -14,7 +14,8 @@ struct PkmDetailResponse: Decodable {
     let height: Double
     let weight: Double
     let baseExperience: Int
-    let abilities: [PKmAbilityResponse]
+    let abilities: [PkmAbilityResponse]
+    let sprites: PkmSprite
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -23,6 +24,7 @@ struct PkmDetailResponse: Decodable {
         case weight
         case baseExperience = "base_experience"
         case abilities
+        case sprites
     }
     
 }
@@ -39,7 +41,7 @@ struct PkmAbility: Decodable {
     
 }
 
-struct PKmAbilityResponse: Decodable, Identifiable {
+struct PkmAbilityResponse: Decodable, Identifiable {
     
     let id: UUID = UUID()
     let ability: PkmAbility
@@ -50,6 +52,30 @@ struct PKmAbilityResponse: Decodable, Identifiable {
         case ability
         case isHidden = "is_hidden"
         case slot
+    }
+    
+}
+
+struct PkmSprite: Decodable {
+    
+    let back_default: String?
+    let back_female: String?
+    let back_shiny: String?
+    let back_shiny_female: String?
+    let front_default: String?
+    let front_female: String?
+    let front_shiny: String?
+    let front_shiny_female: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case back_default
+        case back_female
+        case back_shiny
+        case back_shiny_female
+        case front_default
+        case front_female
+        case front_shiny
+        case front_shiny_female
     }
     
 }

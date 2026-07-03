@@ -35,7 +35,12 @@ struct PokemonDetail: View {
                         .frame(width: 30, height: 30)
                 }
             })
-            //ToDo: Add View space for image, if exist ...
+            AsyncImage(url: URL(string: pkmVM.pkmDetail?.sprites.front_default ?? "")) { image in
+                image.image?
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 80, maxHeight: 80)
+            }
             VStack(alignment: .center, spacing: 10, content: {
                 HStack(alignment: .center, spacing: 10, content: {
                     Text(LocalString.format(value: pkmVM.pkmDetail?.height ?? 0, with: KeyLocal.PokeDetail.txtHeight, in: .pokeDetail))

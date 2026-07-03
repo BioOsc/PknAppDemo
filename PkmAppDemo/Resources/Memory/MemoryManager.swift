@@ -115,7 +115,7 @@ class MemoryManager {
             print("LOG: Failed to fetch Core Data: \(error.localizedDescription)")
             return []
         }
-    }*/
+    }*///MARK: May be practical use a generic type for memory entries.
     //MARK: Singleton entity
     static var shared: MemoryManager = {
         return MemoryManager()

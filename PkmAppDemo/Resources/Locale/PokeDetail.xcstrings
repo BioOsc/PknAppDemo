@@ -75,13 +75,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Height: %1$(height)lf"
+            "value" : "Height: %.1f"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Altura: %(height)lf"
+            "value" : "Altura: %.1f"
           }
         }
       }
@@ -92,13 +92,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Weight: %1$(weight)lf"
+            "value" : "Weight: %.1f"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Peso: %(weight)lf"
+            "value" : "Peso: %.1f"
           }
         }
       }

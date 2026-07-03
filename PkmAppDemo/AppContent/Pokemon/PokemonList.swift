@@ -23,7 +23,7 @@ struct PokemonList: View {
             ScrollView {
                 LazyVStack(spacing: 5) {
                     ForEach(pkmVM.pkmPage) { item in
-                        NavigationLink(destination: PokemonDetail(pokeID: getInnerID(pokemon: item))) {
+                        NavigationLink(destination: PokemonDetail(pokeID: pkmVM.getInnerID(pokemon: item))) {
                             PokeSheet(source: item)
                         }
                     }
@@ -48,13 +48,6 @@ struct PokemonList: View {
                 }, height: 50, width: 80)
             })
         })
-    }
-    
-    func getInnerID(pokemon: PkmResult) -> Int {
-        var resource: String = pokemon.url.replacingOccurrences(of: "https://pokeapi.co/api/v2/pokemon/", with: "")
-        resource = resource.replacingOccurrences(of: "/", with: "")
-        
-        return Int(resource)!
     }
     
 }
