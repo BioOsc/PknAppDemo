@@ -19,8 +19,9 @@ struct PokeSheet: View {
         HStack(alignment: .center, spacing: 8, content: {
             Text(content.name)
                 .font(.title3)
+                .foregroundColor(.contrast)
                 .frame(maxWidth: .infinity, minHeight: 60)
-            //ToDo: Include image if is included in response
+            //ToDo: Display image if is included in response
         })
         .background(Color.baseBG)
         .frame(maxWidth: .infinity, maxHeight: 60)

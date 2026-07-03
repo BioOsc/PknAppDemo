@@ -23,9 +23,9 @@ struct PokemonList: View {
             ScrollView {
                 LazyVStack(spacing: 5) {
                     ForEach(pkmVM.pkmPage) { item in
-                        /*NavigationLink(destination: CharacterDetail(characterID: char.id)) {
-                            RMCharSheet(source: char)
-                        }*/
+                        NavigationLink(destination: PokemonDetail(pokeID: pkmVM.getInnerID(pokemon: item))) {
+                            PokeSheet(source: item)
+                        }
                     }
                 }
                 .padding(25)
@@ -47,7 +47,6 @@ struct PokemonList: View {
                     pkmVM.getBy(page: currentPg)
                 }, height: 50, width: 80)
             })
-            //NavigationLink("", destination: FavoriteCharacter(), tag: 1, selection: $navFlag)
         })
     }
     
