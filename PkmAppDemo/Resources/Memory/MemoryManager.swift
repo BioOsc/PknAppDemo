@@ -12,7 +12,7 @@ final class MemoryKey {
     
     private init() {}
     
-    static let favoriteCharacters = "PKM_Mem_favorite"
+    static let favPokemon = "PKM_Mem_favorite"
     
 }
 //MARK: Singleton module
@@ -34,20 +34,20 @@ class MemoryManager {
     }
     //MARK: User Defaults
     func setFavorite(ref: Int) -> Bool {
-        var storage: [Int] = (UserDefaults.standard.array(forKey: MemoryKey.favoriteCharacters) ?? []) as! [Int]
+        var storage: [Int] = (UserDefaults.standard.array(forKey: MemoryKey.favPokemon) ?? []) as! [Int]
         let duplicate: Int? = storage.first(where: { elm in
             return elm == ref
         })
         
         if (duplicate == nil) {
             storage.append(ref)
-            UserDefaults.standard.setValue(storage.sorted(), forKey: MemoryKey.favoriteCharacters)
+            UserDefaults.standard.setValue(storage.sorted(), forKey: MemoryKey.favPokemon)
             return true
         } else { return false }
     }
     
     func characterIsFavorite(ref: Int) -> Bool {
-        var storage: [Int] = (UserDefaults.standard.array(forKey: MemoryKey.favoriteCharacters) ?? []) as! [Int]
+        var storage: [Int] = (UserDefaults.standard.array(forKey: MemoryKey.favPokemon) ?? []) as! [Int]
         let item: Int? = storage.first(where: { elm in
             return elm == ref
         })
@@ -56,12 +56,12 @@ class MemoryManager {
     }
     
     func removeFavorite(ref: Int) {
-        var storage: [Int] = (UserDefaults.standard.array(forKey: MemoryKey.favoriteCharacters) ?? []) as! [Int]
+        var storage: [Int] = (UserDefaults.standard.array(forKey: MemoryKey.favPokemon) ?? []) as! [Int]
         storage.removeAll(where: { elm in
             elm == ref
         })
         
-        UserDefaults.standard.setValue(storage.sorted(), forKey: MemoryKey.favoriteCharacters)
+        UserDefaults.standard.setValue(storage.sorted(), forKey: MemoryKey.favPokemon)
     }
     //MARK: Core Data - Incomplete implementation | Actual function did not need this, but may be informative for review
     /*func saveFavCharacter(char: <CustomObject>) {
